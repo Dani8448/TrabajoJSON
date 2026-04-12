@@ -1,31 +1,34 @@
+Proyecto: Gestión de Videojuegos con JSON en Python
+1. Descripción
+
 Este proyecto consiste en un programa en Python que trabaja con un fichero JSON de videojuegos.
-El objetivo es poder leer los datos, procesarlos y mostrar información útil a través de un menú.
+El objetivo es leer los datos, procesarlos y mostrar información útil mediante un menú interactivo.
 
-Estructura del proyecto
-
+2. Estructura del proyecto
 proyecto-json-videojuegos/
+│
 ├── video_games.json
 ├── main.py
 ├── funciones.py
 ├── README.md
 └── capturas.pdf
 
-Origen del JSON
+4. Origen del JSON
 
-El archivo JSON se ha obtenido del proyecto educativo CORGIS y posteriormente se ha modificado para hacerlo más completo.
+El archivo JSON proviene del proyecto educativo CORGIS y ha sido modificado para enriquecer los datos.
 
-Fuente: CORGIS
-Dataset original: videojuegos
+Fuente original
+Dataset CORGIS: videojuegos
 Cambios realizados
-Se han convertido géneros y plataformas en listas
-Se ha añadido un objeto desarrollador con nombre y país
-Se ha añadido un bloque de valoraciones
-Se han añadido datos de ventas por regiones
-Se ha añadido un sistema de reseñas con críticos y usuarios
+Conversión de géneros y plataformas en listas
+Añadido un objeto "desarrollador" con nombre y país
+Incorporación de un bloque de valoraciones
+Inclusión de ventas por regiones
+Sistema de reseñas con críticos y usuarios
 
-Estructura del JSON
+4. Estructura del JSON
 
-El JSON está formado por una lista de videojuegos. Cada uno contiene información como:
+El archivo contiene una lista de videojuegos. Cada videojuego incluye:
 
 Título y año
 Géneros y plataformas
@@ -34,94 +37,66 @@ Valoraciones
 Ventas
 Reseñas
 
-Tiene varios niveles de profundidad (hasta 5), lo que obliga a trabajar bien con diccionarios y listas.
+Nota:
+La estructura tiene hasta 5 niveles de profundidad, lo que requiere un buen manejo de diccionarios y listas en Python.
 
--Funciones principales
-
-Las funciones están en el archivo funciones.py:
-
+5. Funciones principales (funciones.py)
+Carga de datos
 cargar_datos(ruta)
-
 Carga el JSON y devuelve los datos.
-
+Visualización
 listar_videojuegos(videojuegos)
-
 Muestra todos los juegos con su año y plataformas.
 contar_videojuegos(videojuegos)
-
-Muestra cuántos juegos hay en total y por plataforma.
-
+Muestra el total de juegos y el número por plataforma.
+Filtros y búsqueda
 filtrar_por_anio(videojuegos, inicio, fin)
-
 Filtra juegos dentro de un rango de años.
-
 buscar_por_desarrollador(videojuegos, nombre)
-
-Muestra los juegos de un desarrollador.
-
+Busca juegos por desarrollador (sin distinguir mayúsculas/minúsculas).
+Cálculos
 _media_criticos(juego)
-
-Calcula la media de críticos.
-
+Calcula la media de puntuaciones de críticos.
 mostrar_mejor_puntuacion(videojuegos)
-
-Muestra los juegos con mejor puntuación.
-
+Muestra los juegos con mejor puntuación junto con sus ventas.
+Entrada de datos
 pedir_anio(mensaje)
+Solicita un año y valida la entrada del usuario.
+6. Funcionalidades del programa
+Listar videojuegos
 
-Pide un año y valida que sea correcto.
-
--Funcionalidades
-
-1. Listar videojuegos
-
-Se muestran todos los videojuegos con:
+Se muestran:
 
 Título
 Año
 Plataformas
-
-2. Contar videojuegos
+Contar videojuegos
 
 Se muestra:
 
-Total de juegos
+Número total de juegos
 Número de juegos por plataforma
-
-3. Filtrar por año
-
-El usuario introduce un rango de años y se muestran los juegos dentro de ese rango.
-
-Si el usuario se equivoca en el orden, el programa lo corrige.
-
-4. Buscar por desarrollador
-
-Permite introducir un desarrollador y ver todos sus juegos.
-
-No distingue entre mayúsculas y minúsculas.
-
-5. Mejor puntuación
-
-Se calcula qué juegos tienen la mejor puntuación de críticos y se muestran junto con sus ventas totales.
-
--Manejo de errores
-
-Si el fichero no existe → el programa se cierra mostrando error
-Si el usuario introduce mal un año → se vuelve a pedir
-Si el rango está al revés → se corrige automáticamente
-
--Ejecución
-
+Filtrar por año
+El usuario introduce un rango de años
+Si el orden es incorrecto, el programa lo corrige automáticamente
+Buscar por desarrollador
+Permite introducir el nombre de un desarrollador
+No distingue entre mayúsculas y minúsculas
+Mejor puntuación
+Calcula qué juegos tienen la mejor puntuación de críticos
+Muestra también sus ventas totales
+7. Manejo de errores
+Si el fichero no existe: el programa se cierra mostrando un error
+Si el usuario introduce un año incorrecto: se vuelve a pedir
+Si el rango de años está invertido: se corrige automáticamente
+8. Ejecución
 python main.py
-
--Dificultades
-
-Trabajar con tantos niveles del JSON fue complicado al principio
-Acceder a campos como reseñas (con tilde) daba errores si no se escribía exactamente igual
-Calcular la media de críticos requería separar bien la lógica en funciones
--Decisiones
-
-Separar el código en main.py y funciones.py para que sea más claro
-Crear una función aparte para la media de críticos
-Hacer que el programa sea flexible con los errores del usuario
-No limpiar pantalla para poder ver bien los resultados
+9. Dificultades encontradas
+Manejar múltiples niveles del JSON
+Acceder correctamente a claves con caracteres especiales (como "reseñas")
+Separar la lógica para calcular la media de críticos
+10. Decisiones de diseño
+Separación del código en main.py y funciones.py para mayor claridad
+Creación de funciones específicas para tareas concretas
+Manejo flexible de errores del usuario
+No limpiar la pantalla para facilitar la visualización de resultados
