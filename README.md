@@ -1,10 +1,10 @@
 Proyecto: Gestión de Videojuegos con JSON en Python
-1. Descripción
+Descripción
 
 Este proyecto consiste en un programa en Python que trabaja con un fichero JSON de videojuegos.
 El objetivo es leer los datos, procesarlos y mostrar información útil mediante un menú interactivo.
 
-2. Estructura del proyecto
+Estructura del proyecto
 proyecto-json-videojuegos/
 │
 ├── video_games.json
@@ -12,8 +12,7 @@ proyecto-json-videojuegos/
 ├── funciones.py
 ├── README.md
 └── capturas.pdf
-
-4. Origen del JSON
+Origen del JSON
 
 El archivo JSON proviene del proyecto educativo CORGIS y ha sido modificado para enriquecer los datos.
 
@@ -25,8 +24,7 @@ Añadido un objeto "desarrollador" con nombre y país
 Incorporación de un bloque de valoraciones
 Inclusión de ventas por regiones
 Sistema de reseñas con críticos y usuarios
-
-4. Estructura del JSON
+Estructura del JSON
 
 El archivo contiene una lista de videojuegos. Cada videojuego incluye:
 
@@ -40,7 +38,7 @@ Reseñas
 Nota:
 La estructura tiene hasta 5 niveles de profundidad, lo que requiere un buen manejo de diccionarios y listas en Python.
 
-5. Funciones principales (funciones.py)
+Funciones principales (funciones.py)
 Carga de datos
 cargar_datos(ruta)
 Carga el JSON y devuelve los datos.
@@ -62,7 +60,7 @@ Muestra los juegos con mejor puntuación junto con sus ventas.
 Entrada de datos
 pedir_anio(mensaje)
 Solicita un año y valida la entrada del usuario.
-6. Funcionalidades del programa
+Funcionalidades del programa
 Listar videojuegos
 
 Se muestran:
@@ -85,17 +83,17 @@ No distingue entre mayúsculas y minúsculas
 Mejor puntuación
 Calcula qué juegos tienen la mejor puntuación de críticos
 Muestra también sus ventas totales
-7. Manejo de errores
+Manejo de errores
 Si el fichero no existe: el programa se cierra mostrando un error
 Si el usuario introduce un año incorrecto: se vuelve a pedir
 Si el rango de años está invertido: se corrige automáticamente
-8. Ejecución
+Ejecución
 python main.py
-9. Dificultades encontradas
+Dificultades encontradas
 Manejar múltiples niveles del JSON
 Acceder correctamente a claves con caracteres especiales (como "reseñas")
 Separar la lógica para calcular la media de críticos
-10. Decisiones de diseño
+Decisiones de diseño
 Separación del código en main.py y funciones.py para mayor claridad
 Creación de funciones específicas para tareas concretas
 Manejo flexible de errores del usuario
