@@ -5,6 +5,8 @@ from funciones import (
     filtrar_por_anio,
     buscar_por_desarrollador,
     mostrar_mejor_puntuacion,
+    filtrado_plat_gen,
+    mostrar_peor_puntuacion
 )
  
 RUTA_JSON = "video_games.json"
@@ -18,6 +20,8 @@ def mostrar_menu() -> None:
     print("║  3. Filtrar por rango de años                         ║")
     print("║  4. Buscar por desarrollador                          ║")
     print("║  5. Videojuego(s) con mayor puntuación de críticos    ║")
+    print("║  6. Videojuego(s) filtrados por plataforma y genero   ║")
+    print("║  7. Videojuego(s) con menor puntuación de críticos    ║")
     print("║  0. Salir                                             ║")
     print("╚" + "═" * 55 + "╝")
  
@@ -64,6 +68,12 @@ def main() -> None:
                 print(" No has introducido ningún nombre.")
         elif opcion == "5":
             mostrar_mejor_puntuacion(videojuegos)
+         elif opcion == "6":
+            plataforma = input('Introduzca la plataforma: ')
+            genero = input('Introduzca el genero: ')
+            filtrado_plat_gen(videojuegos, plataforma, genero)
+        elif opcion == "7":
+            mostrar_peor_puntuacion(videojuegos)
         elif opcion == "0":
             print("\n  ¡Hasta luego!\n")
             ejecutando = 0
