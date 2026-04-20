@@ -68,7 +68,7 @@ def main() -> None:
                 print(" No has introducido ningún nombre.")
         elif opcion == "5":
             mostrar_mejor_puntuacion(videojuegos)
-         elif opcion == "6":
+        elif opcion == "6":
             plataforma = input('Introduzca la plataforma: ')
             genero = input('Introduzca el genero: ')
             filtrado_plat_gen(videojuegos, plataforma, genero)
