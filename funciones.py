@@ -158,3 +158,72 @@ def mostrar_mejor_puntuacion(videojuegos: list) -> None:
         print(f"     Ventas totales   : {ventas_tot:.2f} millones")
  
     print("\n" + "=" * 65)
+
+
+
+
+
+#NUEVAS FUNCIONES
+
+#1.Filtrado por plataforma y genero
+    
+def filtrado_plat_gen(videojuegos: list, plataforma: str, genero: str) -> None:
+    print("FILTRADO POR PLATAFORMA Y GENERO")
+    resultados = [
+        j for j in videojuegos
+        if plataforma in j["plataforma"] and genero.lower() in [g.lower() for g in j["genero"]]
+    ]
+    if not resultados:
+            print("No hay videojuegos de ese género ni plataforma.")
+    else:
+            for juego in resultados:
+                print(f"{juego['titulo']} ({juego['plataforma']})")
+    
+
+#2.Calcula la puntuacion minima de todos los juegos
+
+def _media_criticos_min(juego: dict) -> float:
+    """Calcula la media de críticos: (metacritic + ign*10) / 2."""
+    metacritic = juego["reseñas"]["criticos"]["metacritic"]
+    ign        = juego["reseñas"]["criticos"]["ign"]
+    return (metacritic + ign * 10) / 2
+ 
+def mostrar_peor_puntuacion(videojuegos: list) -> str:
+    """Muestra el/los videojuego(s) con minima puntuación media de críticos."""
+    print("\n" + "=" * 65)
+    print(f"{'VIDEOJUEGO(S) CON MENOR PUNTUACIÓN DE CRÍTICOS':^65}")
+    print("=" * 65)
+ 
+    # Calculamos la media minima
+    puntuacion_min = min(_media_criticos_min(j) for j in videojuegos)
+ 
+    # Filtramos todos los que tienen esa puntuación minima
+    peores = [j for j in videojuegos if _media_criticos_min(j) == puntuacion_min]
+ 
+    print(f"\n  Puntuación minima de críticos: {puntuacion_min:.2f} / 100")
+    print(f"  Número de videojuegos con esa puntuación: {len(peores)}\n")
+    print("  " + "-" * 60)
+ 
+    for juego in peores:
+        generos     = ", ".join(juego["genero"])
+        plataformas = ", ".join(juego["plataforma"])
+        ventas_tot  = (
+            juego["ventas"]["europa"]
+            + juego["ventas"]["america"]
+            + juego["ventas"]["japon"]
+        )
+        media       = _media_criticos(juego)
+        metacritic  = juego["reseñas"]["criticos"]["metacritic"]
+        ign         = juego["reseñas"]["criticos"]["ign"]
+ 
+        print(f"\n   {juego['titulo']}")
+        print(f"     Año              : {juego['año']}")
+        print(f"     Género(s)        : {generos}")
+        print(f"     Plataforma(s)    : {plataformas}")
+        print(f"     Desarrollador    : {juego['desarrollador']['nombre']}")
+        print(f"     Metacritic       : {metacritic}")
+        print(f"     IGN              : {ign:.1f}")
+        print(f"     Media críticos   : {media:.2f} / 100")
+        print(f"     Ventas totales   : {ventas_tot:.2f} millones")
+ 
+    print("\n" + "=" * 65)
